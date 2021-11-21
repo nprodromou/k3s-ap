@@ -38,4 +38,3 @@
     - name: Inform the OS of partition table changes
       command: 'partprobe "{{ disk }}"'
       ignore_errors: yes
-

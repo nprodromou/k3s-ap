@@ -41,10 +41,22 @@ tasks:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-install.yml"
 
   playbook:k3s-nuke:
-    desc: Install Kubernetes on the nodes
+    desc: Uninstall Kubernetes on the nodes
     dir: provision/ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s-nuke.yml"
+
+  playbook:ceph-zap:
+    desc: Wipe Ceph Data
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ceph-zap.yml"
+
+  playbook:ubuntu-reset-pw:
+    desc: Reset the password on all hosts
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu-reset-pw.yml"
 
   adhoc:ping:
     desc: Ping all the hosts
