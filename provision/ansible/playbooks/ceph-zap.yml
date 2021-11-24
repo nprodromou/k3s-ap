@@ -27,6 +27,10 @@
     #   command: 'blkdiscard "{{ disk }}"'
     #   ignore_errors: yes
 
+    - name: Unlock Disks
+      command: 'ls /dev/mapper/ceph-* | xargs -I% -- dmsetup remove %'
+      ignore_errors: yes
+
     - name: Remove /dev/ceph-*
       command: 'rm -rf /dev/ceph-*'
       ignore_errors: yes
