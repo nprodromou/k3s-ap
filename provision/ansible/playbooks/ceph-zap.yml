@@ -1,6 +1,7 @@
 ---
 - hosts:
-    - all
+    - master
+    - worker
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -21,6 +22,11 @@
     - name: Remove /dev/mapper/ceph-*
       command: 'rm -rf /dev/mapper/ceph-*'
       ignore_errors: yes
+
+    - name: Remove lxd
+      snap:
+        name: lxd
+        state: absent
 
 - hosts:
     - ceph
