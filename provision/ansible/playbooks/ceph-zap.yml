@@ -23,10 +23,7 @@
       command: 'rm -rf /dev/mapper/ceph-*'
       ignore_errors: yes
 
-    - name: Remove lxd
-      snap:
-        name: lxd
-        state: absent
+
 
 - hosts:
     - ceph
@@ -47,6 +44,11 @@
     - name: Clean hdds with dd
       command: 'dd if=/dev/zero of="{{ disk }}" bs=1M count=100 oflag=direct,dsync'
       ignore_errors: yes
+
+    - name: Remove lxd
+      snap:
+        name: lxd
+        state: absent
 
     # - name: Clean disks such as ssd with blkdiscard instead of dd
     #   command: 'blkdiscard "{{ disk }}"'
