@@ -97,4 +97,4 @@ spec:
         - name: "sda"
       - name: "aprp12"
         devices:
-         - name: "sda"
+        - name: "sda"
