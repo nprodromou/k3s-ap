@@ -10,7 +10,7 @@
       ansible.builtin.file:
         path: /var/lib/rook
         state: absent
-        
+
     - name: Unlock Disks
       command: 'ls /dev/mapper/ceph-* | xargs -I% -- dmsetup remove %'
       ignore_errors: yes
@@ -22,7 +22,6 @@
     - name: Remove /dev/mapper/ceph-*
       command: 'rm -rf /dev/mapper/ceph-*'
       ignore_errors: yes
-
 
 
 - hosts:
@@ -57,4 +56,3 @@
     - name: Inform the OS of partition table changes
       command: 'partprobe "{{ disk }}"'
       ignore_errors: yes
-
